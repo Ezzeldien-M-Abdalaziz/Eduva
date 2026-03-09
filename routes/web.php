@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Frontend\UserDashboardController;
 use \App\Http\Controllers\Frontend\InstructorDashboardController;
@@ -9,7 +8,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* Student Role Users Routes */
+/*
+ * -------------------------------------------------
+  * Student Role Users Routes
+ * -------------------------------------------------
+*/
 Route::group(['middleware' => ['auth', 'verified' , 'check_role:student'] , 'prefix' => 'student' , 'as' => 'student.'] , function(){
 
     Route::get('/dashboard' , [UserDashboardController::class , 'index'] )->name('dashboard');
@@ -17,7 +20,11 @@ Route::group(['middleware' => ['auth', 'verified' , 'check_role:student'] , 'pre
 
 
 
-/* Instructor Role Users Routes */
+/*
+ * -------------------------------------------------
+  * instructor Role Users Routes
+ * -------------------------------------------------
+*/
 Route::group(['middleware' => ['auth', 'verified' , 'check_role:instructor'] , 'prefix' => 'instructor' , 'as' => 'instructor.'] , function(){
 
     Route::get('/dashboard' , [InstructorDashboardController::class , 'index'] )->name('dashboard');
