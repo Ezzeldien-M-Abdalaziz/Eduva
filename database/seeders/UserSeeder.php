@@ -13,21 +13,24 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-      $users =   [
+        $users = [
             [
-                'name' => 'student1',
-                'email' => 'student1@gmail.com',
-                'password' => bcrypt('123456'),
-                'role' => 'student'
+                'name' => 'Jhon Deo',
+                'email' => 'user@gmail.com',
+                'password' => bcrypt(12345678),
+                'role' => 'student',
+                'approve_status' => 'approved'
             ],
-              [
-                  'name' => 'Instructor1',
-                  'email' => 'Instructor1@gmail.com',
-                  'password' => bcrypt('123456'),
-                  'role' => 'instructor'
-              ],
+            [
+                'name' => 'Instructor',
+                'email' => 'instructor@gmail.com',
+                'password' => bcrypt(12345678),
+                'role' => 'instructor',
+                'approve_status' => 'approved'
+            ],
         ];
 
-       User::insert($users);
+        User::insert($users);
+        
     }
 }
